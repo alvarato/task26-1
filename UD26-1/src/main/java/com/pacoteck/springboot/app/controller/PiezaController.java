@@ -2,7 +2,10 @@ package com.pacoteck.springboot.app.controller;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,12 +23,13 @@ public class PiezaController {
 	@Autowired
 	PiezaServiceImp imp;
 	
+	 //@RolesAllowed("admin")
 	@GetMapping("/findAll")
 	public List<Pieza> findAll(){
 		return imp.findAll();
 	}
 	
-	@PutMapping("/delete{id}")
+	@DeleteMapping("/delete{id}")
 	public void deleteById(@PathVariable("id") int id) {
 		imp.deleteById(id);
 	}
